@@ -1,7 +1,7 @@
-import { validate } from '../..';
+import { isMaterialColor } from '../..';
 
 const printResult = async (files: string[]) => {
-  const output = await validate(files[0]);
+  const output = await isMaterialColor(files[0]);
   console.log(output);
 };
 
