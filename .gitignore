@@ -1,0 +1,10 @@
+# Dependencies
+node_modules
+
+# Build
+lib
+out
+dist
+
+# Tests
+coverage

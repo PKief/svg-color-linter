@@ -1,0 +1,57 @@
+{
+  "name": "material-color-linter",
+  "version": "1.0.0",
+  "description": "Linting tool to check if SVG files use only colors of the Material Design Color palette",
+  "main": "./lib/index.js",
+  "module": "./lib/index.js",
+  "bin": {
+    "material-color-linter": "./bin/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "jest",
+    "lint": "eslint -c .eslintrc.json --ext .ts ./src/**/*.ts",
+    "start": "ts-node src/cli/index.ts test.svg test1.svg",
+    "changelog": "npx changelog-machine --config changelog.config.json",
+    "prepublish": "npm run build",
+    "version": "npm run changelog && git add CHANGELOG.md"
+  },
+  "files": [
+    "lib/"
+  ],
+  "keywords": [
+    "SVG",
+    "Linter",
+    "Material Design Colors"
+  ],
+  "engines": {
+    "node": ">=4.2.0"
+  },
+  "author": "Philipp Kief",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PKief/material-color-linter/issues"
+  },
+  "homepage": "https://github.com/PKief/material-color-linter/blob/main/README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PKief/material-color-linter.git"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.0",
+    "@types/chroma-js": "^2.1.3",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "changelog-machine": "^1.0.2",
+    "eslint": "^8.3.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.5.0",
+    "ts-jest": "^27.1.3",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "chroma-js": "^2.1.2"
+  }
+}

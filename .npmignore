@@ -1,0 +1,9 @@
+# Ignore everything
+*
+*/**
+
+# Whitelist what you need
+!lib/*
+!bin/*
+!LICENSE.md
+!logo.png
