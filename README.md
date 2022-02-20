@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-    <img src="https://github.com/PKief/changelog-machine/raw/main/logo.png" alt="logo" width="200">
+    <img src="https://github.com/PKief/svg-color-linter/raw/main/logo.png" alt="logo" width="200">
   <br><br>
   SVG Color Linter
   <br>
