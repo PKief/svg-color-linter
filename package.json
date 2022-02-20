@@ -1,7 +1,7 @@
 {
   "name": "svg-color-linter",
   "version": "1.0.0",
-  "description": "Linting tool to check if SVG files use only colors of the Material Design Color palette",
+  "description": "Linting tool to check if SVG files use only colors of a given color palette",
   "main": "./lib/index.js",
   "module": "./lib/index.js",
   "bin": {
@@ -22,7 +22,7 @@
   "keywords": [
     "SVG",
     "Linter",
-    "Material Design Colors"
+    "Colors"
   ],
   "engines": {
     "node": ">=4.2.0"
@@ -38,8 +38,9 @@
     "url": "git+https://github.com/PKief/svg-color-linter.git"
   },
   "devDependencies": {
-    "@types/jest": "^27.4.0",
     "@types/chroma-js": "^2.1.3",
+    "@types/jest": "^27.4.0",
+    "@types/js-yaml": "^4.0.5",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "changelog-machine": "^1.0.2",
@@ -52,6 +53,7 @@
     "typescript": "^4.5.5"
   },
   "dependencies": {
-    "chroma-js": "^2.1.2"
+    "chroma-js": "^2.1.2",
+    "js-yaml": "^4.1.0"
   }
 }

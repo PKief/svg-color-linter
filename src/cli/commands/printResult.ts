@@ -1,6 +1,7 @@
-import { getSuggestions, isMaterialColor } from '../..';
+import * as yaml from 'js-yaml';
+import { getSuggestions, isColorInPalette } from '../../core';
 import { readFileAsync } from '../../core/async';
-import { Result } from '../../core/models';
+import { ColorPalette, Result } from '../../core/models';
 import { green, red } from '../utils';
 
 const printResult = async (fileNames: string[]) => {
@@ -16,19 +17,22 @@ const printResult = async (fileNames: string[]) => {
     }
 
     const colors = getColorsInFile(contents);
+    const palette = yaml.load(
+      await readFileAsync('./colors.yml', 'utf8')
+    ) as ColorPalette;
     colors.forEach((color) => {
-      if (!isMaterialColor(color)) {
+      if (!isColorInPalette(color, palette.colors)) {
         invalidColors.push({
           file: fileName,
           invalidColor: color,
-          suggestions: getSuggestions(color),
+          suggestions: getSuggestions(color, palette.colors),
         });
       }
     });
   }
 
   if (invalidColors.length === 0) {
-    console.log(green('✅ All colors are valid Material Design colors.'));
+    console.log(green('✅ All colors are valid colors of the palette.'));
   } else {
     invalidColors.forEach((color) => {
       console.log(

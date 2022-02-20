@@ -1,19 +1,21 @@
 import { distance } from 'chroma-js';
 import { ColorSuggestion } from './models';
 import { isValidColor, toHexColor } from './utils';
-import { materialColors } from './colors';
 
-const getSuggestions = (color: string): ColorSuggestion[] => {
+const getSuggestions = (
+  color: string,
+  palette: string[]
+): ColorSuggestion[] => {
   if (!isValidColor(color)) {
     throw new Error(`The given color "${color}" is not valid!`);
   }
 
   color = toHexColor(color);
 
-  const distances = materialColors
-    .map((matColor) => ({
-      distance: distance(matColor.hex, color),
-      color: matColor.hex,
+  const distances = palette
+    .map((paletteColor) => ({
+      distance: distance(paletteColor, color),
+      color: paletteColor,
     }))
     .sort((a, b) => a.distance - b.distance);
 

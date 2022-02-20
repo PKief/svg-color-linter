@@ -2,12 +2,12 @@
   <br>
     <img src="https://github.com/PKief/changelog-machine/raw/main/logo.png" alt="logo" width="200">
   <br><br>
-  Material Color Linter
+  SVG Color Linter
   <br>
   <br>
 </h1>
 
-<h4 align="center">Linting tool to check if SVG files use only colors of the Material Design Color palette.</h4>
+<h4 align="center">Linting tool to check if SVG files only use colors of a given color palette.</h4>
 
 ## CLI Command
 
@@ -38,7 +38,7 @@ yarn add --dev svg-color-linter
 The module can be imported like this:
 
 ```ts
-import { isMaterialColor } from 'svg-color-linter';
+import { isColorInPalette } from 'svg-color-linter';
 
-isMaterialColor('#FFFFFF');
+isColorInPalette('#FFFFFF', ['#EEEEEE', '#121212']); // false
 ```
