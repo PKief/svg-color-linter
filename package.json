@@ -1,11 +1,11 @@
 {
-  "name": "material-color-linter",
+  "name": "svg-color-linter",
   "version": "1.0.0",
   "description": "Linting tool to check if SVG files use only colors of the Material Design Color palette",
   "main": "./lib/index.js",
   "module": "./lib/index.js",
   "bin": {
-    "material-color-linter": "./bin/cli.js"
+    "svg-color-linter": "./bin/cli.js"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -30,12 +30,12 @@
   "author": "Philipp Kief",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PKief/material-color-linter/issues"
+    "url": "https://github.com/PKief/svg-color-linter/issues"
   },
-  "homepage": "https://github.com/PKief/material-color-linter/blob/main/README.md",
+  "homepage": "https://github.com/PKief/svg-color-linter/blob/main/README.md",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PKief/material-color-linter.git"
+    "url": "git+https://github.com/PKief/svg-color-linter.git"
   },
   "devDependencies": {
     "@types/jest": "^27.4.0",

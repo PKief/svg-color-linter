@@ -1,4 +1,4 @@
 {
-  "repositoryUrl": "https://github.com/PKief/material-color-linter",
+  "repositoryUrl": "https://github.com/PKief/svg-color-linter",
   "blacklistPattern": "^Release \\d+\\.\\d+\\.\\d+|^\\d+\\.\\d+\\.\\d+$"
 }

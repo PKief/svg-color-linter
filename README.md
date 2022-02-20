@@ -14,7 +14,7 @@
 The tool can be executed with this command:
 
 ```
-npx material-color-linter file1.svg file2.svg
+npx svg-color-linter file1.svg file2.svg
 ```
 
 It will generate a file called CHANGELOG.md in the root directory of the project.
@@ -26,19 +26,19 @@ The tool can be imported as module into existing JavaScript or TypeScript code. 
 NPM:
 
 ```
-npm install --save-dev material-color-linter
+npm install --save-dev svg-color-linter
 ```
 
 Yarn:
 
 ```
-yarn add --dev material-color-linter
+yarn add --dev svg-color-linter
 ```
 
 The module can be imported like this:
 
 ```ts
-import { isMaterialColor } from 'material-color-linter';
+import { isMaterialColor } from 'svg-color-linter';
 
 isMaterialColor('#FFFFFF');
 ```
