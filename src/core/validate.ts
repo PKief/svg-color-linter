@@ -1,4 +1,4 @@
-import { isValidColor, toHexColor } from '../utils';
+import { isValidColor, toHexColor } from './utils';
 import { materialColors } from './colors';
 
 const isMaterialColor = (color: string): boolean => {

@@ -1,4 +1,4 @@
-import { Color } from '../models';
+import { Color } from './models';
 
 export const materialColors: Color[] = [
   { category: 'red', hue: '50', hex: '#FFEBEE' },

@@ -1,6 +1,6 @@
 import { distance } from 'chroma-js';
-import { ColorSuggestion } from '../models';
-import { isValidColor, toHexColor } from '../utils';
+import { ColorSuggestion } from './models';
+import { isValidColor, toHexColor } from './utils';
 import { materialColors } from './colors';
 
 const getSuggestions = (color: string): ColorSuggestion[] => {
