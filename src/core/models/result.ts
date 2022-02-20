@@ -1,6 +1,7 @@
 export interface Result {
-  match: boolean;
-  colorNeighbors: ColorSuggestion[];
+  file: string;
+  invalidColor: string;
+  suggestions: ColorSuggestion[];
 }
 
 export interface ColorSuggestion {

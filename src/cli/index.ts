@@ -5,4 +5,8 @@ const run = async () => {
   await printResult(fileNames);
 };
 
-run();
+try {
+  run();
+} catch (error) {
+  console.error(error);
+}
