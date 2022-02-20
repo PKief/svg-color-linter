@@ -1,10 +1,4 @@
-import { isMaterialColor } from './validate';
-
-jest.mock('./colors', () => ({
-  get materialColors() {
-    return [{ category: 'red', hue: '50', hex: '#FFEBEE' }];
-  },
-}));
+import { isColorInPalette } from './validate';
 
 describe('Validate colors', () => {
   beforeEach(() => {
@@ -14,21 +8,21 @@ describe('Validate colors', () => {
     }));
   });
 
-  it('should validate if a given color is part of the Material Color palette', () => {
+  it('should validate if a given color is part of the color palette', () => {
     const color = '#FFEBEE';
-    const result = isMaterialColor(color);
+    const result = isColorInPalette(color, [color]);
     expect(result).toBe(true);
   });
 
-  it('should validate if a given color is part of the Material Color palette by being case insensitive', () => {
+  it('should validate if a given color is part of the color palette by being case insensitive', () => {
     const color = '#ffebee';
-    const result = isMaterialColor(color);
+    const result = isColorInPalette(color, ['#FFEBEE']);
     expect(result).toBe(true);
   });
 
-  it('should detect if a given color is not part of the Material Color palette', () => {
+  it('should detect if a given color is not part of the color palette', () => {
     const color = '#FFEBEF';
-    const result = isMaterialColor(color);
+    const result = isColorInPalette(color, []);
     expect(result).toBe(false);
   });
 
@@ -37,6 +31,6 @@ describe('Validate colors', () => {
       isValidColor: jest.fn(() => false),
     }));
     const color = '#123123123';
-    expect(() => isMaterialColor(color)).toThrow();
+    expect(() => isColorInPalette(color, [])).toThrow();
   });
 });
