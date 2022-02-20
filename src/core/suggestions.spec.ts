@@ -23,7 +23,7 @@ jest.mock('./colors', () => ({
 
 describe('Get color suggestions', () => {
   beforeEach(() => {
-    jest.mock('../utils', () => ({
+    jest.mock('./utils', () => ({
       isValidColor: jest.fn(() => true),
       toHexColor: jest.fn((color: string) => color),
     }));

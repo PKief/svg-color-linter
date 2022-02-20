@@ -8,7 +8,7 @@ jest.mock('./colors', () => ({
 
 describe('Validate colors', () => {
   beforeEach(() => {
-    jest.mock('../utils', () => ({
+    jest.mock('./utils', () => ({
       isValidColor: jest.fn(() => true),
       toHexColor: jest.fn((color: string) => color),
     }));
@@ -33,7 +33,7 @@ describe('Validate colors', () => {
   });
 
   it('should throw an error if the color input value is invalid', () => {
-    jest.mock('../utils', () => ({
+    jest.mock('./utils', () => ({
       isValidColor: jest.fn(() => false),
     }));
     const color = '#123123123';
