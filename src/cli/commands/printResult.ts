@@ -4,7 +4,7 @@ import { readFileAsync } from '../../core/async';
 import { ColorPalette, Result } from '../../core/models';
 import { green, red } from '../utils';
 
-const printResult = async (fileNames: string[]) => {
+const printResult = async (fileNames: string[], colorFilePath: string) => {
   const invalidColors: Result[] = [];
   for (const fileName of fileNames) {
     let contents;
@@ -18,7 +18,7 @@ const printResult = async (fileNames: string[]) => {
 
     const colors = getColorsInFile(contents);
     const palette = yaml.load(
-      await readFileAsync('./colors.yml', 'utf8')
+      await readFileAsync(colorFilePath, 'utf8')
     ) as ColorPalette;
     colors.forEach((color) => {
       if (!isColorInPalette(color, palette.colors)) {

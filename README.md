@@ -14,10 +14,20 @@
 The tool can be executed with this command:
 
 ```
-npx svg-color-linter file1.svg file2.svg
+npx svg-color-linter --colors colors.yml file1.svg file2.svg
 ```
 
-It will generate a file called CHANGELOG.md in the root directory of the project.
+It will fetch all the colors of a YAML file which must have the following structure:
+
+```yaml
+colors:
+  - '#FFEBEE'
+  - '#FFCDD2'
+  - '#EF9A9A'
+  - '#E57373'
+  - '#EF5350'
+  - '#F44336'
+```
 
 ## Programmatic use
 
