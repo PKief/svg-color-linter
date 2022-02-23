@@ -3,6 +3,7 @@ import * as yaml from 'js-yaml';
 import { getSuggestions, isColorInPalette } from '../../core';
 import { readFileAsync } from '../../core/async';
 import { ColorPalette, InvalidColorResult, Results } from '../../core/models';
+import { isValidColor } from '../../core/utils';
 import { red } from '../utils';
 
 const printResults = async (fileNames: string[], colorFilePath: string) => {
@@ -33,11 +34,11 @@ const printResults = async (fileNames: string[], colorFilePath: string) => {
     invalidColorResults.forEach((result) => {
       console.log(
         red(
-          `⚠️  The color "${result.invalidColor}" in file "${
-            result.file
-          }" is invalid.\n\nYou can use one of the following instead: [${result.suggestions
+          `⚠️  [${result.file}] Invalid color "${
+            result.invalidColor
+          }". Suggestions: [${result.suggestions
             .map((s) => s.hex)
-            .join(', ')}]`
+            .join(', ')}]\n`
         )
       );
     });
@@ -103,9 +104,22 @@ const getInvalidColorsOfFile = (
 };
 
 const getColorsInFile = (fileContents: string): string[] => {
-  const colorPattern = new RegExp(/fill="([^"]+)"/, 'g');
-  const colors = fileContents.matchAll(colorPattern);
-  return [...colors].map((c) => c[1]);
+  const colorPattern = new RegExp(/(fill|stop-color|stroke)="([^"]+)"/, 'gi');
+  const colorPatternCss = new RegExp(/(stroke|fill):\s([^;]+)/, 'gi');
+  const colors = [
+    ...fileContents.matchAll(colorPattern),
+    ...fileContents.matchAll(colorPatternCss),
+  ];
+
+  return [...colors]
+    .map((c) => c[2])
+    .filter((c) => c !== undefined)
+    .filter((c): c is string => {
+      if (c) {
+        return isValidColor(c);
+      }
+      return false;
+    });
 };
 
 const containsBase64EncodedString = (fileContents: string): boolean => {

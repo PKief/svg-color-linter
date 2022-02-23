@@ -1,6 +1,9 @@
 import { valid } from 'chroma-js';
 
-const isValidColor = (hexColor: string): boolean => {
+const isValidColor = (hexColor: string | undefined): boolean => {
+  if (hexColor === undefined) {
+    return false;
+  }
   return valid(hexColor);
 };
 
