@@ -1,3 +1,4 @@
+import isSvg from 'is-svg';
 import * as yaml from 'js-yaml';
 import { getSuggestions, isColorInPalette } from '../../core';
 import { readFileAsync } from '../../core/async';
@@ -5,10 +6,18 @@ import { ColorPalette, InvalidColorResult, Results } from '../../core/models';
 import { red } from '../utils';
 
 const printResults = async (fileNames: string[], colorFilePath: string) => {
-  const { invalidColorResults, base64Results } = await getResults(
-    fileNames,
-    colorFilePath
-  );
+  const { invalidColorResults, base64Results, invalidSvgResults } =
+    await getResults(fileNames, colorFilePath);
+
+  if (invalidSvgResults.length > 0) {
+    invalidSvgResults.forEach((result) => {
+      console.log(
+        red(
+          `The file "${result.file}" contains invalid SVG syntax and could not be recognized as valid SVG file`
+        )
+      );
+    });
+  }
 
   if (base64Results.length > 0) {
     base64Results.forEach((result) => {
@@ -43,7 +52,9 @@ const getResults = async (
   const result: Results = {
     invalidColorResults: [],
     base64Results: [],
+    invalidSvgResults: [],
   };
+
   for (const fileName of fileNames) {
     const svgFileContent = await readSvgFile(fileName);
     const colors = getColorsInFile(svgFileContent);
@@ -53,6 +64,8 @@ const getResults = async (
 
     if (containsBase64EncodedString(svgFileContent)) {
       result.base64Results.push({ file: fileName, base64Error: true });
+    } else if (!isSvg(svgFileContent)) {
+      result.invalidSvgResults.push({ file: fileName, invalidSvg: true });
     } else {
       result.invalidColorResults.push(
         ...getInvalidColorsOfFile(colors, palette, fileName)

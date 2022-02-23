@@ -1,6 +1,7 @@
 export interface Results {
   invalidColorResults: InvalidColorResult[];
   base64Results: Base64Result[];
+  invalidSvgResults: InvalidSvgResult[];
 }
 
 export interface InvalidColorResult {
@@ -12,6 +13,11 @@ export interface InvalidColorResult {
 export interface Base64Result {
   file: string;
   base64Error: boolean;
+}
+
+export interface InvalidSvgResult {
+  file: string;
+  invalidSvg: boolean;
 }
 
 export interface ColorSuggestion {
