@@ -1,6 +1,6 @@
 import minimist from 'minimist';
 import { printHelp } from './commands/printHelp';
-import { printResult } from './commands/printResult';
+import { printResults } from './commands/printResults';
 import { printVersion } from './commands/printVersion';
 import { flags } from './config/options';
 
@@ -24,7 +24,7 @@ const run = async () => {
     throw new Error('List of colors must be provided.');
   }
 
-  await printResult(args._, args.colors);
+  await printResults(args._, args.colors);
 };
 
 try {
