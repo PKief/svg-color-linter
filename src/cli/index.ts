@@ -24,7 +24,6 @@ const run = async () => {
     throw new Error('List of colors must be provided.');
   }
 
-  console.log(args);
   await printResult(args._, args.colors);
 };
 
