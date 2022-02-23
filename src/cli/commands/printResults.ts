@@ -4,7 +4,7 @@ import { getSuggestions, isColorInPalette } from '../../core';
 import { readFileAsync } from '../../core/async';
 import { ColorPalette, InvalidColorResult, Results } from '../../core/models';
 import { isValidColor } from '../../core/utils';
-import { red } from '../utils';
+import { green, red } from '../utils';
 
 const printResults = async (fileNames: string[], colorFilePath: string) => {
   const { invalidColorResults, base64Results, invalidSvgResults } =
@@ -12,11 +12,7 @@ const printResults = async (fileNames: string[], colorFilePath: string) => {
 
   if (invalidSvgResults.length > 0) {
     invalidSvgResults.forEach((result) => {
-      console.log(
-        red(
-          `The file "${result.file}" contains invalid SVG syntax and could not be recognized as valid SVG file`
-        )
-      );
+      console.log(red(`⚠️  [${result.file}] Invalid SVG syntax`));
     });
   }
 
@@ -24,7 +20,7 @@ const printResults = async (fileNames: string[], colorFilePath: string) => {
     base64Results.forEach((result) => {
       console.log(
         red(
-          `The file "${result.file}" contains a base64 string and therefor it cannot be guaranteed that all colors are of the palette`
+          `⚠️  [${result.file}] Usage of base64 string, no guarantee that all colors are of the palette`
         )
       );
     });
@@ -42,7 +38,18 @@ const printResults = async (fileNames: string[], colorFilePath: string) => {
         )
       );
     });
+  }
+
+  if (
+    invalidColorResults.length +
+      invalidSvgResults.length +
+      base64Results.length ===
+    0
+  ) {
+    console.log(green('✅ All colors in all files are valid!'));
+    process.exit(0);
   } else {
+    process.exit(1);
   }
 };
 
