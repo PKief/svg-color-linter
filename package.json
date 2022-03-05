@@ -12,7 +12,6 @@
     "build": "tsc -p tsconfig.json",
     "test": "jest",
     "lint": "eslint -c .eslintrc.json --ext .ts ./src/**/*.ts",
-    "start": "ts-node src/cli/index.ts --colors colors.yml test.svg",
     "changelog": "npx changelog-machine --config changelog.config.json",
     "prepublish": "npm run build",
     "version": "npm run changelog && git add CHANGELOG.md"
