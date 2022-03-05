@@ -48,7 +48,17 @@ yarn add --dev svg-color-linter
 The module can be imported like this:
 
 ```ts
-import { isColorInPalette } from 'svg-color-linter';
+import { isColorInPalette, getSuggestions } from 'svg-color-linter';
 
-isColorInPalette('#FFFFFF', ['#EEEEEE', '#121212']); // false
+isColorInPalette('#FFFFFF', ['#EEEEEE', '#121212']);
+// false
+
+getSuggestions('##C0CA35', ['#EEEEEE', '#121212']);
+// [
+//   { hex: '#C0CA33', distance: 0.6447550226954274 },
+//   { hex: '#CDDC39', distance: 8.143421457635025 },
+//   { hex: '#D4E157', distance: 9.090777903129522 },
+//   { hex: '#AFB42B', distance: 9.175451993395148 },
+//   { hex: '#DCE775', distance: 17.927826688923673 }
+// ]
 ```
