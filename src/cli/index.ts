@@ -7,7 +7,7 @@ import { flags } from './config/options';
 const run = async () => {
   const args = minimist<{
     version: undefined;
-    config: string;
+    colors: string;
     help: undefined;
   }>(process.argv.slice(2), flags);
 

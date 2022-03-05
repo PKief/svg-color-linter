@@ -2,7 +2,7 @@
 import minimist from 'minimist';
 
 const flags: minimist.Opts | undefined = {
-  string: 'config',
+  string: 'colors',
   boolean: ['version', 'help'],
   alias: { v: 'version', h: 'help' },
   unknown: (a) => true,
