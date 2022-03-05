@@ -1,14 +1,14 @@
 import isSvg from 'is-svg';
 import * as yaml from 'js-yaml';
 import { getSuggestions, isColorInPalette } from '../../core';
-import { readFileAsync } from '../../core/async';
+import { globAsync, readFileAsync } from '../../core/async';
 import { ColorPalette, InvalidColorResult, Results } from '../../core/models';
 import { isValidColor } from '../../core/utils';
 import { green, red } from '../utils';
 
-const printResults = async (fileNames: string[], colorFilePath: string) => {
+const printResults = async (filePatterns: string[], colorFilePath: string) => {
   const { invalidColorResults, base64Results, invalidSvgResults } =
-    await getResults(fileNames, colorFilePath);
+    await getResults(filePatterns, colorFilePath);
 
   if (invalidSvgResults.length > 0) {
     invalidSvgResults.forEach((result) => {
@@ -54,7 +54,7 @@ const printResults = async (fileNames: string[], colorFilePath: string) => {
 };
 
 const getResults = async (
-  fileNames: string[],
+  filePatterns: string[],
   colorFilePath: string
 ): Promise<Results> => {
   const result: Results = {
@@ -63,21 +63,25 @@ const getResults = async (
     invalidSvgResults: [],
   };
 
-  for (const fileName of fileNames) {
-    const svgFileContent = await readSvgFile(fileName);
-    const colors = getColorsInFile(svgFileContent);
-    const palette = yaml.load(
-      await readFileAsync(colorFilePath, 'utf8')
-    ) as ColorPalette;
+  for (const filePattern of filePatterns) {
+    const globFiles = await globAsync(filePattern);
+    for (const fileName of globFiles) {
+      const svgFileContent = await readSvgFile(fileName);
+      const colors = getColorsInFile(svgFileContent);
 
-    if (containsBase64EncodedString(svgFileContent)) {
-      result.base64Results.push({ file: fileName, base64Error: true });
-    } else if (!isSvg(svgFileContent)) {
-      result.invalidSvgResults.push({ file: fileName, invalidSvg: true });
-    } else {
-      result.invalidColorResults.push(
-        ...getInvalidColorsOfFile(colors, palette, fileName)
-      );
+      const palette = yaml.load(
+        await readFileAsync(colorFilePath, 'utf8')
+      ) as ColorPalette;
+
+      if (containsBase64EncodedString(svgFileContent)) {
+        result.base64Results.push({ file: fileName, base64Error: true });
+      } else if (!isSvg(svgFileContent)) {
+        result.invalidSvgResults.push({ file: fileName, invalidSvg: true });
+      } else {
+        result.invalidColorResults.push(
+          ...getInvalidColorsOfFile(colors, palette, fileName)
+        );
+      }
     }
   }
   return result;
@@ -99,7 +103,13 @@ const getInvalidColorsOfFile = (
   fileName: string
 ): InvalidColorResult[] => {
   return colors.reduce<InvalidColorResult[]>((result, color) => {
-    if (!isColorInPalette(color, palette.colors)) {
+    if (!isValidColor(color)) {
+      result.push({
+        file: fileName,
+        invalidColor: color,
+        suggestions: [],
+      });
+    } else if (!isColorInPalette(color, palette.colors)) {
       result.push({
         file: fileName,
         invalidColor: color,
@@ -118,15 +128,7 @@ const getColorsInFile = (fileContents: string): string[] => {
     ...fileContents.matchAll(colorPatternCss),
   ];
 
-  return [...colors]
-    .map((c) => c[2])
-    .filter((c) => c !== undefined)
-    .filter((c): c is string => {
-      if (c) {
-        return isValidColor(c);
-      }
-      return false;
-    });
+  return [...colors].map((c) => c[2]).filter((c) => c !== undefined);
 };
 
 const containsBase64EncodedString = (fileContents: string): boolean => {

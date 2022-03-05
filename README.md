@@ -29,6 +29,12 @@ colors:
   - '#F44336'
 ```
 
+It also supports glob file patterns to check multiple files matching the pattern like this:
+
+```
+npx svg-color-linter --colors colors.yml ./images/**/*.svg ./another-dir/*.svg test.svg
+```
+
 ## Programmatic use
 
 The tool can be imported as module into existing JavaScript or TypeScript code. Therefor it is necessary to install it via npm or yarn:
