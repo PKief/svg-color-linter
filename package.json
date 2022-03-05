@@ -27,7 +27,12 @@
   "engines": {
     "node": ">=4.2.0"
   },
-  "author": "Philipp Kief",
+  "author": {
+    "name": "Philipp Kief",
+    "email": "philipp.kief@gmx.de",
+    "url": "https://pkief.github.io"
+  },
+  "funding": "https://github.com/sponsors/pkief",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/PKief/svg-color-linter/issues"
