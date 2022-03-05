@@ -112,7 +112,7 @@ const getInvalidColorsOfFile = (
 
 const getColorsInFile = (fileContents: string): string[] => {
   const colorPattern = new RegExp(/(fill|stop-color|stroke)="([^"]+)"/, 'gi');
-  const colorPatternCss = new RegExp(/(stroke|fill):\s([^;]+)/, 'gi');
+  const colorPatternCss = new RegExp(/(stroke|fill):\s?([^;"]+)/, 'gi');
   const colors = [
     ...fileContents.matchAll(colorPattern),
     ...fileContents.matchAll(colorPatternCss),
