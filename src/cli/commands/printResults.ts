@@ -1,3 +1,4 @@
+import isGlob from 'is-glob';
 import isSvg from 'is-svg';
 import * as yaml from 'js-yaml';
 import { getSuggestions, isColorInPalette } from '../../core';
@@ -64,7 +65,10 @@ const getResults = async (
   };
 
   for (const filePattern of filePatterns) {
-    const globFiles = await globAsync(filePattern);
+    const globFiles = isGlob(filePattern)
+      ? await globAsync(filePattern)
+      : [filePattern];
+
     for (const fileName of globFiles) {
       const svgFileContent = await readSvgFile(fileName);
       const colors = getColorsInFile(svgFileContent);
