@@ -132,7 +132,10 @@ const getColorsInFile = (fileContents: string): string[] => {
     ...fileContents.matchAll(colorPatternCss),
   ];
 
-  return [...colors].map((c) => c[2]).filter((c) => c !== undefined);
+  return [...colors]
+    .map((c) => c[2])
+    .filter((c) => c !== undefined)
+    .filter((c) => c !== 'none');
 };
 
 const containsBase64EncodedString = (fileContents: string): boolean => {
