@@ -3,6 +3,13 @@
  All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
  
+#### [v1.1.2](https://github.com/PKief/svg-color-linter/compare/v1.1.1...v1.1.2) 
+
+> June 20, 2022 
+
+- Update jest config [`7ec849a`](https://github.com/PKief/svg-color-linter/commit/7ec849a)
+- Change type to module [`21db1c1`](https://github.com/PKief/svg-color-linter/commit/21db1c1)
+ 
 #### [v1.1.1](https://github.com/PKief/svg-color-linter/compare/v1.1.0...v1.1.1) 
 
 > March 6, 2022 
