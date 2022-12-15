@@ -61,7 +61,7 @@
     "typescript": "^4.5.5"
   },
   "dependencies": {
-    "chroma-js": "^2.1.2",
+    "chroma-js": "^2.2.0",
     "glob": "^7.2.0",
     "is-glob": "^4.0.3",
     "is-svg": "^4.3.2",
