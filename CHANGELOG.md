@@ -3,6 +3,13 @@
  All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
  
+#### [v1.2.0](https://github.com/PKief/svg-color-linter/compare/v1.1.3...v1.2.0) 
+
+> December 23, 2022 
+
+- Use chroma.deltaE in color suggestion [`#4`](https://github.com/PKief/svg-color-linter/pull/4)
+- Remove bundled package from repository [`1ff2681`](https://github.com/PKief/svg-color-linter/commit/1ff2681)
+ 
 #### [v1.1.3](https://github.com/PKief/svg-color-linter/compare/v1.1.2...v1.1.3) 
 
 > June 20, 2022 
