@@ -29,15 +29,13 @@ const printResults = async (filePatterns: string[], colorFilePath: string) => {
 
   if (invalidColorResults.length > 0) {
     invalidColorResults.forEach((result) => {
-      console.log(
-        red(
-          `⚠️  [${result.file}] Invalid color "${
-            result.invalidColor
-          }". Suggestions: [${result.suggestions
-            .map((s) => s.hex)
-            .join(', ')}]\n`
-        )
-      );
+      const suggestionsText =
+        result.suggestions.length > 0
+          ? `Suggestions: [${result.suggestions.map((s) => s.hex).join(', ')}]`
+          : '';
+
+      const errorMessage = `⚠️  [${result.file}] Invalid color "${result.invalidColor}". ${suggestionsText}\n`;
+      console.log(red(errorMessage));
     });
   }
 
