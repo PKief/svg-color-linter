@@ -59,12 +59,12 @@ import { isColorInPalette, getSuggestions } from 'svg-color-linter';
 isColorInPalette('#FFFFFF', ['#EEEEEE', '#121212']);
 // false
 
-getSuggestions('##C0CA35', ['#EEEEEE', '#121212']);
+getSuggestions('#C0CA35', ['#EEEEEE', '#121212']);
 // [
-//   { hex: '#C0CA33', distance: 0.6447550226954274 },
-//   { hex: '#CDDC39', distance: 8.143421457635025 },
-//   { hex: '#D4E157', distance: 9.090777903129522 },
-//   { hex: '#AFB42B', distance: 9.175451993395148 },
-//   { hex: '#DCE775', distance: 17.927826688923673 }
+//   { hex: '#C0CA33', distance: 0.160467661071053 },
+//   { hex: '#CDDC39', distance: 4.307076277707079 },
+//   { hex: '#D4E157', distance: 5.606714639567858 },
+//   { hex: '#AFB42B', distance: 5.713845679863578 },
+//   { hex: '#DCE775', distance: 8.065940911169271 }
 // ]
 ```
