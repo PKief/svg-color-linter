@@ -135,6 +135,7 @@ const getColorsInFile = (fileContents: string): string[] => {
   return [...colors]
     .map((c) => c[2])
     .filter((c) => c !== undefined)
+    .filter((c) => !c.match(/url\(#\w+\)/))
     .filter((c) => c !== 'none');
 };
 
