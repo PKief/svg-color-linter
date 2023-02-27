@@ -3,6 +3,14 @@
  All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
  
+#### [v1.3.0](https://github.com/PKief/svg-color-linter/compare/v1.2.0...v1.3.0) 
+
+> February 27, 2023 
+
+- Refactor code [`e5b34bc`](https://github.com/PKief/svg-color-linter/commit/e5b34bc)
+- Hide suggestions if no suggestions are available [`f048f84`](https://github.com/PKief/svg-color-linter/commit/f048f84)
+- Allow gradient ids to be specified for colors [`7127d42`](https://github.com/PKief/svg-color-linter/commit/7127d42)
+ 
 #### [v1.2.0](https://github.com/PKief/svg-color-linter/compare/v1.1.3...v1.2.0) 
 
 > December 23, 2022 
