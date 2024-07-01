@@ -1,8 +1,8 @@
 import { exec } from 'child_process';
 import { mkdir, readFile, writeFile } from 'fs';
-import glob from 'glob';
 import { dirname } from 'path';
 import { promisify } from 'util';
+import glob from 'glob';
 
 const execAsync = promisify(exec);
 const writeFileAsync = promisify(writeFile);
