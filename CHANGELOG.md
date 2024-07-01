@@ -3,6 +3,13 @@
  All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
  
+#### [v1.3.1](https://github.com/PKief/svg-color-linter/compare/v1.3.0...v1.3.1) 
+
+> July 1, 2024 
+
+- Update interface [`9126257`](https://github.com/PKief/svg-color-linter/commit/9126257)
+- Fix typo in versionChange field in release.yml [`f34ac3d`](https://github.com/PKief/svg-color-linter/commit/f34ac3d)
+ 
 #### [v1.3.0](https://github.com/PKief/svg-color-linter/compare/v1.2.0...v1.3.0) 
 
 > February 27, 2023 
