@@ -1,8 +1,9 @@
+import { glob } from 'glob';
 import isGlob from 'is-glob';
 import isSvg from 'is-svg';
 import * as yaml from 'js-yaml';
 import { getSuggestions, isColorInPalette } from '../../core';
-import { globAsync, readFileAsync } from '../../core/async';
+import { readFileAsync } from '../../core/async';
 import { ColorPalette, InvalidColorResult, Results } from '../../core/models';
 import { isValidColor } from '../../core/utils';
 import { green, red } from '../utils';
@@ -64,7 +65,7 @@ const getResults = async (
 
   for (const filePattern of filePatterns) {
     const globFiles = isGlob(filePattern)
-      ? await globAsync(filePattern)
+      ? await glob(filePattern)
       : [filePattern];
 
     for (const fileName of globFiles) {
