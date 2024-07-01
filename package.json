@@ -11,20 +11,14 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "jest",
-    "lint": "bunx --bun @biomejs/biome check --write ./src",
-    "format": "bunx --bun @biomejs/biome format --write ./src",
+    "lint": "npx @biomejs/biome check --write ./src",
+    "format": "npx @biomejs/biome format --write ./src",
     "changelog": "npx changelog-machine --config changelog.config.json",
     "prepublish": "npm run build",
     "version": "npm run changelog && git add CHANGELOG.md"
   },
-  "files": [
-    "lib/"
-  ],
-  "keywords": [
-    "SVG",
-    "Linter",
-    "Colors"
-  ],
+  "files": ["lib/"],
+  "keywords": ["SVG", "Linter", "Colors"],
   "engines": {
     "node": ">=4.2.0"
   },
