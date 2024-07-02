@@ -4,40 +4,41 @@ import isSvg from 'is-svg';
 import * as yaml from 'js-yaml';
 import { getSuggestions, isColorInPalette } from '../../core';
 import { readFileAsync } from '../../core/async';
-import { ColorPalette, InvalidColorResult, Results } from '../../core/models';
+import type {
+  ColorPalette,
+  InvalidColorResult,
+  Results,
+} from '../../core/models';
 import { isValidColor } from '../../core/utils';
-import { green, red } from '../utils';
 
 const printResults = async (filePatterns: string[], colorFilePath: string) => {
   const { invalidColorResults, base64Results, invalidSvgResults } =
     await getResults(filePatterns, colorFilePath);
 
   if (invalidSvgResults.length > 0) {
-    invalidSvgResults.forEach((result) => {
-      console.log(red(`⚠️  [${result.file}] Invalid SVG syntax`));
-    });
+    for (const result of invalidSvgResults) {
+      console.log(`[${result.file}] Invalid SVG syntax`);
+    }
   }
 
   if (base64Results.length > 0) {
-    base64Results.forEach((result) => {
+    for (const result of base64Results) {
       console.log(
-        red(
-          `⚠️  [${result.file}] Usage of base64 string, no guarantee that all colors are of the palette`
-        )
+        `[${result.file}] Usage of base64 string, no guarantee that all colors are of the palette`
       );
-    });
+    }
   }
 
   if (invalidColorResults.length > 0) {
-    invalidColorResults.forEach((result) => {
+    for (const result of invalidColorResults) {
       const suggestionsText =
         result.suggestions.length > 0
           ? `Suggestions: [${result.suggestions.map((s) => s.hex).join(', ')}]`
           : '';
 
-      const errorMessage = `⚠️  [${result.file}] Invalid color "${result.invalidColor}". ${suggestionsText}\n`;
-      console.log(red(errorMessage));
-    });
+      const errorMessage = `[${result.file}] Invalid color "${result.invalidColor}". ${suggestionsText}\n`;
+      console.log(errorMessage);
+    }
   }
 
   if (
@@ -46,7 +47,7 @@ const printResults = async (filePatterns: string[], colorFilePath: string) => {
       base64Results.length ===
     0
   ) {
-    console.log(green('✅ All colors in all files are valid!'));
+    console.log('✅ All colors in all files are valid!');
     process.exit(0);
   } else {
     process.exit(1);
@@ -141,7 +142,7 @@ const getColorsInFile = (fileContents: string): string[] => {
 };
 
 const containsBase64EncodedString = (fileContents: string): boolean => {
-  const base64Pattern = new RegExp('data:image/png;base64', 'gi');
+  const base64Pattern = /data:image\/png;base64/gi;
   return base64Pattern.test(fileContents);
 };
 
