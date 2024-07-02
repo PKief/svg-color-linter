@@ -1,3 +1,4 @@
+import { basename } from 'path';
 import { glob } from 'glob';
 import isGlob from 'is-glob';
 import * as yaml from 'js-yaml';
@@ -35,7 +36,7 @@ const printResults = async (filePatterns: string[], colorFilePath: string) => {
           ? `Suggestions: [${result.suggestions.map((s) => s.hex).join(', ')}]`
           : '';
 
-      const errorMessage = `[${result.file}] Invalid color "${result.invalidColor}". ${suggestionsText}\n`;
+      const errorMessage = `[${result.file}] Invalid color "${result.invalidColor}". ${suggestionsText}`;
       console.log(errorMessage);
     }
   }
@@ -78,13 +79,15 @@ const getResults = async (
 
       const isSvg = (await import('is-svg')).default;
 
+      const fileBasename = basename(fileName);
+
       if (containsBase64EncodedString(svgFileContent)) {
-        result.base64Results.push({ file: fileName, base64Error: true });
+        result.base64Results.push({ file: fileBasename, base64Error: true });
       } else if (!isSvg(svgFileContent)) {
-        result.invalidSvgResults.push({ file: fileName, invalidSvg: true });
+        result.invalidSvgResults.push({ file: fileBasename, invalidSvg: true });
       } else {
         result.invalidColorResults.push(
-          ...getInvalidColorsOfFile(colors, palette, fileName)
+          ...getInvalidColorsOfFile(colors, palette, fileBasename)
         );
       }
     }
