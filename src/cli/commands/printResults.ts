@@ -1,6 +1,5 @@
 import { glob } from 'glob';
 import isGlob from 'is-glob';
-import isSvg from 'is-svg';
 import * as yaml from 'js-yaml';
 import { getSuggestions, isColorInPalette } from '../../core';
 import { readFileAsync } from '../../core/async';
@@ -76,6 +75,8 @@ const getResults = async (
       const palette = yaml.load(
         await readFileAsync(colorFilePath, 'utf8')
       ) as ColorPalette;
+
+      const isSvg = (await import('is-svg')).default;
 
       if (containsBase64EncodedString(svgFileContent)) {
         result.base64Results.push({ file: fileName, base64Error: true });
