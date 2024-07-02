@@ -3,6 +3,17 @@
  All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
  
+#### [v1.4.0](https://github.com/PKief/svg-color-linter/compare/v1.3.1...v1.4.0) 
+
+> July 2, 2024 
+
+- Update output format [`43a56c4`](https://github.com/PKief/svg-color-linter/commit/43a56c4)
+- Resolve issue with commonjs module is-svg [`789078c`](https://github.com/PKief/svg-color-linter/commit/789078c)
+- Update format of output [`9d7ce40`](https://github.com/PKief/svg-color-linter/commit/9d7ce40)
+- Update scripts [`274d5e2`](https://github.com/PKief/svg-color-linter/commit/274d5e2)
+- Update dependencies [`590d644`](https://github.com/PKief/svg-color-linter/commit/590d644)
+- Migrate to biome [`9d5771b`](https://github.com/PKief/svg-color-linter/commit/9d5771b)
+ 
 #### [v1.3.1](https://github.com/PKief/svg-color-linter/compare/v1.3.0...v1.3.1) 
 
 > July 1, 2024 
