@@ -1,4 +1,4 @@
-import { analyzeFiles } from '../../core';
+import { analyzeFiles } from '../analyze-files';
 
 const printResults = async (filePatterns: string[], colorFilePath: string) => {
   const { invalidColorResults, base64Results, invalidSvgResults } =
