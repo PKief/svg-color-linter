@@ -3,6 +3,12 @@
  All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
  
+#### [v2.0.2](https://github.com/PKief/svg-color-linter/compare/v2.0.1...v2.0.2) 
+
+> July 3, 2024 
+
+- Update workflow permissions [`0916de7`](https://github.com/PKief/svg-color-linter/commit/0916de7)
+ 
 #### [v2.0.1](https://github.com/PKief/svg-color-linter/compare/v2.0.0...v2.0.1) 
 
 > July 3, 2024 
