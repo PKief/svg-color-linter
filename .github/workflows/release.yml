@@ -63,7 +63,7 @@ jobs:
           name: ${{ env.DISPLAY_NAME }} v${{ env.VERSION }}
           generate_release_notes: true
 
-      - name: Publish to NPM Registry 🚀
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish to NPM Registry 🌐
+        run: |
+          npm set "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}"
+          npm publish --provenance --access public
