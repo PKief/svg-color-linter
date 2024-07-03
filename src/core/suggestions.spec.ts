@@ -1,12 +1,4 @@
-import {
-  afterEach,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  jest,
-  mock,
-} from 'bun:test';
+import { describe, expect, it } from 'bun:test';
 import { getSuggestions } from './suggestions';
 
 describe('Get color suggestions', () => {

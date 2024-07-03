@@ -1,3 +1,5 @@
-export * from './analyze-files';
-export * from './validate-color';
+export * from './get-colors-of-file';
+export * from './get-invalid-colors-of-file';
+export * from './models';
 export * from './suggestions';
+export * from './validate-color';

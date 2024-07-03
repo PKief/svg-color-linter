@@ -3,9 +3,12 @@ import { basename } from 'node:path';
 import { glob } from 'glob';
 import isGlob from 'is-glob';
 import * as yaml from 'js-yaml';
-import { getColorsOfFile } from './get-colors-of-file';
-import { getInvalidColorsOfFile } from './get-invalid-colors-of-file';
-import { ColorPalette, Results } from './models';
+import {
+  ColorPalette,
+  Results,
+  getColorsOfFile,
+  getInvalidColorsOfFile,
+} from '../core';
 import { containsBase64EncodedString, readSvgFile } from './utils';
 
 export const analyzeFiles = async (
