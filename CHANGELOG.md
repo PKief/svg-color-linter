@@ -3,6 +3,12 @@
  All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
  
+#### [v2.0.0](https://github.com/PKief/svg-color-linter/compare/v1.4.0...v2.0.0) 
+
+> July 3, 2024 
+
+- Update the API (new AnalyzeFiles function for server environment) and update to Bun for better performance [`c5fbb3f`](https://github.com/PKief/svg-color-linter/commit/c5fbb3f)
+ 
 #### [v1.4.0](https://github.com/PKief/svg-color-linter/compare/v1.3.1...v1.4.0) 
 
 > July 2, 2024 
