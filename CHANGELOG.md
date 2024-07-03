@@ -3,6 +3,14 @@
  All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
  
+#### [v2.0.3](https://github.com/PKief/svg-color-linter/compare/v2.0.2...v2.0.3) 
+
+> July 3, 2024 
+
+- Update import [`df68e6c`](https://github.com/PKief/svg-color-linter/commit/df68e6c)
+- Update interface [`1ea8432`](https://github.com/PKief/svg-color-linter/commit/1ea8432)
+- Move files into cli directory to avoid conflicts with Node [`22059c2`](https://github.com/PKief/svg-color-linter/commit/22059c2)
+ 
 #### [v2.0.2](https://github.com/PKief/svg-color-linter/compare/v2.0.1...v2.0.2) 
 
 > July 3, 2024 
