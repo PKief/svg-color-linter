@@ -1,13 +1,15 @@
+import {
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  jest,
+  mock,
+} from 'bun:test';
 import { getSuggestions } from './suggestions';
 
 describe('Get color suggestions', () => {
-  beforeEach(() => {
-    jest.mock('./utils', () => ({
-      isValidColor: jest.fn(() => true),
-      toHexColor: jest.fn((color: string) => color),
-    }));
-  });
-
   it('should give color suggestions for a given color', () => {
     const color = '#FFEBEF';
     const result = getSuggestions(color, [

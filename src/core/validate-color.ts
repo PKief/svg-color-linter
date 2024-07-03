@@ -1,6 +1,6 @@
 import { isValidColor, toHexColor } from './utils';
 
-const isColorInPalette = (color: string, palette: string[]): boolean => {
+export const validateColor = (color: string, palette: string[]): boolean => {
   if (!isValidColor(color)) {
     throw new Error(`The given color "${color}" is not valid!`);
   }
@@ -9,5 +9,3 @@ const isColorInPalette = (color: string, palette: string[]): boolean => {
       paletteColor.toUpperCase() === toHexColor(color).toUpperCase()
   );
 };
-
-export { isColorInPalette };

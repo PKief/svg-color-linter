@@ -10,23 +10,17 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "test": "jest",
-    "lint": "npx @biomejs/biome check --write ./src",
-    "format": "npx @biomejs/biome format --write ./src",
-    "changelog": "npx changelog-machine --config changelog.config.json",
-    "prepublish": "npm run build",
-    "version": "npm run changelog && git add CHANGELOG.md"
+    "test": "bun test",
+    "lint": "bunx @biomejs/biome check --write ./src",
+    "format": "bunx @biomejs/biome format --write ./src",
+    "changelog": "bunx changelog-machine --config changelog.config.json",
+    "prepublish": "bun run build",
+    "version": "bun run changelog && git add CHANGELOG.md"
   },
-  "files": [
-    "lib/"
-  ],
-  "keywords": [
-    "SVG",
-    "Linter",
-    "Colors"
-  ],
+  "files": ["lib/"],
+  "keywords": ["SVG", "Linter", "Colors"],
   "engines": {
-    "node": ">=4.2.0"
+    "bun": ">=1.0.0"
   },
   "author": {
     "name": "Philipp Kief",
@@ -52,12 +46,11 @@
     "@types/js-yaml": "^4.0.9",
     "@types/minimist": "^1.2.5",
     "changelog-machine": "^1.1.0",
-    "jest": "^29.7.0",
     "ts-jest": "^29.1.5",
-    "ts-node": "^10.9.2",
     "typescript": "^5.5.2"
   },
   "dependencies": {
+    "@types/bun": "^1.1.6",
     "chroma-js": "^2.4.2",
     "glob": "^10.4.2",
     "is-glob": "^4.0.3",

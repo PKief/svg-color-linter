@@ -21,7 +21,16 @@ const run = async () => {
   }
 
   if (!args.colors) {
-    throw new Error('List of colors must be provided.');
+    console.log('List of colors must be provided.');
+    printHelp();
+    process.exit(1);
+  }
+
+  // If no file patterns are provided, print help
+  if (args._.length === 0) {
+    console.log('At least one file pattern must be provided.');
+    printHelp();
+    process.exit(1);
   }
 
   await printResults(args._, args.colors);

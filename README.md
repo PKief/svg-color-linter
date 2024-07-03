@@ -14,41 +14,33 @@
 The tool can be executed with this command:
 
 ```
-npx svg-color-linter --colors colors.yml file1.svg file2.svg
+bunx svg-color-linter --colors colors.yml file1.svg file2.svg
 ```
 
 It will fetch all the colors of a YAML file which must have the following structure:
 
 ```yaml
 colors:
-  - '#FFEBEE'
-  - '#FFCDD2'
-  - '#EF9A9A'
-  - '#E57373'
-  - '#EF5350'
-  - '#F44336'
+  - "#FFEBEE"
+  - "#FFCDD2"
+  - "#EF9A9A"
+  - "#E57373"
+  - "#EF5350"
+  - "#F44336"
 ```
 
 It also supports glob file patterns to check multiple files matching the pattern like this:
 
 ```
-npx svg-color-linter --colors colors.yml ./images/**/*.svg ./another-dir/*.svg test.svg
+bunx svg-color-linter --colors colors.yml ./images/**/*.svg ./another-dir/*.svg test.svg
 ```
 
 ## Programmatic use
 
-The tool can be imported as module into existing JavaScript or TypeScript code. Therefor it is necessary to install it via npm or yarn:
-
-NPM:
+The tool can be imported as module into existing JavaScript or TypeScript code. Therefor it is necessary to install it via package manager:
 
 ```
-npm install --save-dev svg-color-linter
-```
-
-Yarn:
-
-```
-yarn add --dev svg-color-linter
+npm install svg-color-linter
 ```
 
 The module can be imported like this:
@@ -68,3 +60,23 @@ getSuggestions('#C0CA35', ['#EEEEEE', '#121212']);
 //   { hex: '#DCE775', distance: 8.065940911169271 }
 // ]
 ```
+
+Additionally, there is a function to analyze multiple files at once. This is only working on server side, because it is using the file system. The function can be used like this:
+
+```ts
+import { analyzeFiles } from "svg-color-linter";
+
+const result = analyzeFiles(["file1.svg", "file2.svg"], "colors.yml");
+```
+
+The result will look like this:
+
+```ts
+{
+  invalidColorResults: ["file1.svg", "file2.svg"],
+  base64Results: ["file1.svg"],
+  invalidSvgResults: ["file2.svg"],
+};
+```
+
+The files here are just sample values, the actual result will contain the file paths of the files that have invalid colors, invalid SVGs or invalid base64 strings.
