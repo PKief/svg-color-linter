@@ -66,7 +66,7 @@ Additionally, there is a function to analyze multiple files at once. This is onl
 ```ts
 import { analyzeFiles } from "svg-color-linter";
 
-const result = analyzeFiles(["file1.svg", "file2.svg"], "colors.yml");
+const result = await analyzeFiles(["file1.svg", "file2.svg"], "colors.yml");
 ```
 
 The result will look like this:
