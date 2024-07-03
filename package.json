@@ -6,7 +6,7 @@
   "main": "./lib/index.js",
   "module": "./lib/index.js",
   "bin": {
-    "svg-color-linter": "./bin/cli.js"
+    "svg-color-linter": "bin/cli.js"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
