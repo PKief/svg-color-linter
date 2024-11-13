@@ -8,7 +8,6 @@ const run = async () => {
   const args = minimist<{
     version: undefined;
     colors: string;
-    exclude: string;
     help: undefined;
   }>(process.argv.slice(2), flags);
 

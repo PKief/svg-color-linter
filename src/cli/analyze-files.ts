@@ -3,7 +3,7 @@ import { basename } from 'node:path';
 import { glob } from 'glob';
 import isGlob from 'is-glob';
 import * as yaml from 'js-yaml';
-import minimatch from 'minimatch';
+import { minimatch } from 'minimatch';
 import {
   ColorPalette,
   Results,
@@ -26,7 +26,7 @@ export const analyzeFiles = async (
     await readFile(colorFilePath, 'utf8')
   ) as ColorPalette;
 
-  const excludePatterns = palette.exclude || [];
+  const excludePatterns: string[] = palette?.exclude || [];
 
   for (const filePattern of filePatterns) {
     const globFiles = isGlob(filePattern)
