@@ -31,4 +31,15 @@ describe('getInvalidColorsOfFile', () => {
       expected
     );
   });
+
+  it('should exclude specified files from analysis', () => {
+    const colors = ['#ff0000', '#00ff00', '#0000ff'];
+    const fileName = 'folder-vuex-store.svg';
+    const excludePatterns = ['folder-vue*', 'grunt', 'jenkins', 'kotlin', 'travis'];
+    const mockPaletteWithExclude: ColorPalette = {
+      ...mockPalette,
+      exclude: excludePatterns,
+    };
+    expect(getInvalidColorsOfFile(colors, mockPaletteWithExclude, fileName)).toEqual([]);
+  });
 });
