@@ -49,11 +49,9 @@ colors:
   - "#F44336"
 
 exclude:
-  - "folder-vue*"
-  - "grunt"
-  - "jenkins"
-  - "kotlin"
-  - "travis"
+  - "icons/icon1.svg"
+  - "icons/icon2.svg"
+  - ...
 ```
 
 ## Programmatic use
