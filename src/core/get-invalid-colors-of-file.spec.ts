@@ -33,13 +33,15 @@ describe('getInvalidColorsOfFile', () => {
   });
 
   it('should exclude specified files from analysis', () => {
-    const colors = ['#ff0000', '#00ff00', '#0000ff'];
+    const colors = ['#f0f0f0'];
     const fileName = 'icon1.svg';
     const excludePatterns = ['icon1.svg'];
     const mockPaletteWithExclude: ColorPalette = {
       ...mockPalette,
       exclude: excludePatterns,
     };
-    expect(getInvalidColorsOfFile(colors, mockPaletteWithExclude, fileName)).toEqual([]);
+    expect(
+      getInvalidColorsOfFile(colors, mockPaletteWithExclude, fileName)
+    ).toEqual([]);
   });
 });

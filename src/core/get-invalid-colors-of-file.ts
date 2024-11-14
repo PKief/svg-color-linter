@@ -1,3 +1,4 @@
+import { minimatch } from 'minimatch';
 import { ColorPalette, InvalidColorResult } from './models';
 import { getSuggestions } from './suggestions';
 import { isValidColor } from './utils';
@@ -8,6 +9,11 @@ export const getInvalidColorsOfFile = (
   palette: ColorPalette,
   fileName: string
 ): InvalidColorResult[] => {
+  if (palette.exclude) {
+    if (palette.exclude.some((pattern) => minimatch(fileName, pattern))) {
+      return [];
+    }
+  }
   return colors.reduce<InvalidColorResult[]>((result, color) => {
     if (!isValidColor(color)) {
       result.push({
