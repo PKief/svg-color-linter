@@ -9,10 +9,8 @@ export const getInvalidColorsOfFile = (
   palette: ColorPalette,
   fileName: string
 ): InvalidColorResult[] => {
-  if (palette.exclude) {
-    if (palette.exclude.some((pattern) => minimatch(fileName, pattern))) {
-      return [];
-    }
+  if (palette.exclude?.some((pattern) => minimatch(fileName, pattern))) {
+    return [];
   }
   return colors.reduce<InvalidColorResult[]>((result, color) => {
     if (!isValidColor(color)) {
