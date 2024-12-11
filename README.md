@@ -35,6 +35,25 @@ It also supports glob file patterns to check multiple files matching the pattern
 bunx svg-color-linter --colors colors.yml ./images/**/*.svg ./another-dir/*.svg test.svg
 ```
 
+### Excluding Files
+
+You can exclude specific files or patterns from the analysis by adding an `exclude` key in the `colors.yml` file. The `exclude` key should contain a list of file patterns to be ignored. For example:
+
+```yaml
+colors:
+  - "#FFEBEE"
+  - "#FFCDD2"
+  - "#EF9A9A"
+  - "#E57373"
+  - "#EF5350"
+  - "#F44336"
+
+exclude:
+  - "icons/icon1.svg"
+  - "icons/icon2.svg"
+  - ...
+```
+
 ## Programmatic use
 
 The tool can be imported as module into existing JavaScript or TypeScript code. Therefor it is necessary to install it via package manager:

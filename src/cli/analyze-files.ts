@@ -3,6 +3,7 @@ import { basename } from 'node:path';
 import { glob } from 'glob';
 import isGlob from 'is-glob';
 import * as yaml from 'js-yaml';
+import { minimatch } from 'minimatch';
 import {
   ColorPalette,
   Results,
@@ -21,18 +22,24 @@ export const analyzeFiles = async (
     invalidSvgResults: [],
   };
 
+  const palette = yaml.load(
+    await readFile(colorFilePath, 'utf8')
+  ) as ColorPalette;
+
+  const excludePatterns: string[] = palette?.exclude || [];
+
   for (const filePattern of filePatterns) {
     const globFiles = isGlob(filePattern)
       ? await glob(filePattern)
       : [filePattern];
 
     for (const fileName of globFiles) {
+      if (excludePatterns.some((pattern) => minimatch(fileName, pattern))) {
+        continue;
+      }
+
       const svgFileContent = await readSvgFile(fileName);
       const colors = getColorsOfFile(svgFileContent);
-
-      const palette = yaml.load(
-        await readFile(colorFilePath, 'utf8')
-      ) as ColorPalette;
 
       const isSvg = (await import('is-svg')).default;
 
