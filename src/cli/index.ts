@@ -7,7 +7,7 @@ import { flags } from './config/options';
 const run = async () => {
   const args = minimist<{
     version: undefined;
-    colors: string;
+    config: string;
     help: undefined;
   }>(process.argv.slice(2), flags);
 
@@ -20,8 +20,8 @@ const run = async () => {
     return;
   }
 
-  if (!args.colors) {
-    console.log('List of colors must be provided.');
+  if (!args.config) {
+    console.log('A config file must be provided.');
     printHelp();
     process.exit(1);
   }
@@ -33,7 +33,7 @@ const run = async () => {
     process.exit(1);
   }
 
-  await printResults(args._, args.colors);
+  await printResults(args._, args.config);
 };
 
 try {

@@ -1,10 +1,10 @@
 import minimist from 'minimist';
 
 const flags: minimist.Opts | undefined = {
-  string: 'colors',
+  string: 'config',
   boolean: ['version', 'help'],
-  alias: { v: 'version', h: 'help' },
-  unknown: (a) => true,
+  alias: { c: 'config', v: 'version', h: 'help' },
+  unknown: () => true,
   default: { lang: 'en' },
   '--': true,
   stopEarly: true,

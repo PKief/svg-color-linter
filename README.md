@@ -14,7 +14,7 @@
 The tool can be executed with this command:
 
 ```
-bunx svg-color-linter --colors colors.yml file1.svg file2.svg
+bunx svg-color-linter --config color-config.yml file1.svg file2.svg
 ```
 
 It will fetch all the colors of a YAML file which must have the following structure:
@@ -32,12 +32,12 @@ colors:
 It also supports glob file patterns to check multiple files matching the pattern like this:
 
 ```
-bunx svg-color-linter --colors colors.yml ./images/**/*.svg ./another-dir/*.svg test.svg
+bunx svg-color-linter --config color-config.yml ./images/**/*.svg ./another-dir/*.svg test.svg
 ```
 
 ### Excluding Files
 
-You can exclude specific files or patterns from the analysis by adding an `exclude` key in the `colors.yml` file. The `exclude` key should contain a list of file patterns to be ignored. For example:
+You can exclude specific files or patterns from the analysis by adding an `exclude` key in the `color-config.yml` file. The `exclude` key should contain a list of file patterns to be ignored. For example:
 
 ```yaml
 colors:

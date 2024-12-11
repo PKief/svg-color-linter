@@ -1,8 +1,8 @@
 import { analyzeFiles } from '../analyze-files';
 
-const printResults = async (filePatterns: string[], colorFilePath: string) => {
+const printResults = async (filePatterns: string[], configFilePath: string) => {
   const { invalidColorResults, base64Results, invalidSvgResults } =
-    await analyzeFiles(filePatterns, colorFilePath);
+    await analyzeFiles(filePatterns, configFilePath);
 
   if (invalidSvgResults.length > 0) {
     for (const result of invalidSvgResults) {

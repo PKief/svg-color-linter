@@ -1,4 +1,4 @@
-export interface ColorPalette {
+export interface Config {
   colors: string[];
   exclude?: string[];
 }

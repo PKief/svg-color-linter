@@ -5,7 +5,7 @@ import isGlob from 'is-glob';
 import * as yaml from 'js-yaml';
 import { minimatch } from 'minimatch';
 import {
-  ColorPalette,
+  Config,
   Results,
   getColorsOfFile,
   getInvalidColorsOfFile,
@@ -14,7 +14,7 @@ import { containsBase64EncodedString, readSvgFile } from './utils';
 
 export const analyzeFiles = async (
   filePatterns: string[],
-  colorFilePath: string
+  configFilePath: string
 ): Promise<Results> => {
   const result: Results = {
     invalidColorResults: [],
@@ -22,11 +22,9 @@ export const analyzeFiles = async (
     invalidSvgResults: [],
   };
 
-  const palette = yaml.load(
-    await readFile(colorFilePath, 'utf8')
-  ) as ColorPalette;
+  const config = yaml.load(await readFile(configFilePath, 'utf8')) as Config;
 
-  const excludePatterns: string[] = palette?.exclude || [];
+  const excludePatterns: string[] = config?.exclude || [];
 
   for (const filePattern of filePatterns) {
     const globFiles = isGlob(filePattern)
@@ -51,7 +49,7 @@ export const analyzeFiles = async (
         result.invalidSvgResults.push({ file: fileBasename, invalidSvg: true });
       } else {
         result.invalidColorResults.push(
-          ...getInvalidColorsOfFile(colors, palette, fileBasename)
+          ...getInvalidColorsOfFile(colors, config, fileBasename)
         );
       }
     }

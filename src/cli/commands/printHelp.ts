@@ -2,10 +2,10 @@ const printHelp = () => {
   return console.log(
     `
   Usage
-    $ bunx svg-color-linter --colors colors.yml mySvgFile.svg anotherSvgFile.svg
+    $ bunx svg-color-linter --config color-config.yml mySvgFile.svg anotherSvgFile.svg
 
   Options
-    --colors, -c Path to the yml file containing the colors
+    --config, -c Path to the yml file containing the colors
     --version, -v  Show version
     --help, -h  Show help
     `
