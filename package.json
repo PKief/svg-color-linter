@@ -13,18 +13,10 @@
     "test": "bun test",
     "lint": "bunx @biomejs/biome check --write ./src",
     "format": "bunx @biomejs/biome format --write ./src",
-    "changelog": "bunx changelog-machine --config changelog.config.json",
-    "prepublish": "bun run build",
-    "version": "bun run changelog && git add CHANGELOG.md"
+    "prepublish": "bun run build"
   },
-  "files": [
-    "lib/"
-  ],
-  "keywords": [
-    "SVG",
-    "Linter",
-    "Colors"
-  ],
+  "files": ["lib/"],
+  "keywords": ["SVG", "Linter", "Colors"],
   "engines": {
     "bun": ">=1.0.0"
   },
@@ -52,7 +44,7 @@
     "@types/jest": "^29.5.12",
     "@types/js-yaml": "^4.0.9",
     "@types/minimist": "^1.2.5",
-    "changelog-machine": "^1.1.0",
+    "changelogen": "^0.5.7",
     "ts-jest": "^29.1.5",
     "typescript": "^5.5.2"
   },
@@ -63,5 +55,8 @@
     "is-svg": "^5.0.1",
     "js-yaml": "^4.1.0",
     "minimist": "^1.2.8"
+  },
+  "patchedDependencies": {
+    "changelogen@0.5.7": "patches/changelogen@0.5.7.patch"
   }
 }

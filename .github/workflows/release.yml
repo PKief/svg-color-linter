@@ -2,73 +2,57 @@ name: Release + Publish
 
 on:
   workflow_dispatch:
-    inputs:
-      versionChange:
-        type: choice
-        description: Select the version change
-        required: true
-        default: minor
-        options:
-          - major
-          - minor
-          - patch
 
 jobs:
   release:
     runs-on: ubuntu-latest
-    env:
-      VERSION_CHANGE: ${{ github.event.inputs.versionChange }}
 
     permissions:
       contents: write
       id-token: write
 
     steps:
-      - name: Checkout 🛎️
+      - name: 🛎️ Checkout
         uses: actions/checkout@v4
         with:
+          # Required for fetching tags and generating release notes
           fetch-depth: 0
 
-      - name: Setup Platform 🛠
+      - name: 🛠 Setup Platform
         uses: oven-sh/setup-bun@v2
         with:
-          bun-version: 1.1.17
+          bun-version-file: ".bun-version"
 
-      - name: Install dependencies 📦
+      - name: 📦 Install dependencies
         run: |
           bun install --frozen-lockfile
           bun add -g npm
 
-      - name: Update version ↗
+      - name: 🔧 Configure Git
         run: |
-          git config --global user.name 'Philipp Kief'
-          git config --global user.email 'PKief@users.noreply.github.com'
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
           git config --global push.followTags true
-          npm version ${{ env.VERSION_CHANGE }} -m "Release %s"
 
-      - name: Get meta data 🔍
+      - name: 📜 Generate changelog and release notes
         run: |
-          NODE_VERSION=$(node -p -e "require('./package.json').version")
-          echo VERSION=$NODE_VERSION >> $GITHUB_ENV
-          NODE_NAME=$(node -p -e "require('./package.json').name")
-          echo NAME=$NODE_NAME >> $GITHUB_ENV
-          NODE_DISPLAY_NAME=$(node -p -e "require('./package.json').displayName")
-          echo DISPLAY_NAME=$NODE_DISPLAY_NAME >> $GITHUB_ENV
+          bunx changelogen --release --push
+          bunx changelogen github release --token ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build ⚒️
+      - name: 📝 Get metadata
+        run: |
+          VERSION=$(jq -r '.version' package.json)
+          NAME=$(jq -r '.name' package.json)
+          DISPLAY_NAME=$(jq -r '.displayName' package.json)
+
+          echo "VERSION=$VERSION"             >> $GITHUB_ENV
+          echo "NAME=$NAME"                   >> $GITHUB_ENV
+          echo "DISPLAY_NAME=$DISPLAY_NAME"   >> $GITHUB_ENV
+
+      - name: ⚒️ Build
         run: bun run build
 
-      - name: Push tags 📌
-        run: git push
-
-      - name: Release ${{ env.VERSION }} 🔆
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: v${{ env.VERSION }}
-          name: ${{ env.DISPLAY_NAME }} v${{ env.VERSION }}
-          generate_release_notes: true
-
-      - name: Publish to NPM Registry 🌐
+      - name: 🌐 Publish to NPM Registry
         run: |
           npm set "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}"
           npm publish --provenance --access public
