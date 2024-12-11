@@ -6,19 +6,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
+      - name: 🛎️ Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Platform 🛠
+      - name: 🛠 Setup Platform
         uses: oven-sh/setup-bun@v2
         with:
-          bun-version: 1.1.17
+          bun-version-file: ".bun-version"
 
-      - name: Install dependencies 📦
+      - name: 📦 Install dependencies
         run: |
           bun install --frozen-lockfile
 
-      - name: Test + Build ⚒️
+      - name: ⚒️ Test + Build
         run: |
           bun run test
           bun run lint
