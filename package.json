@@ -1,7 +1,7 @@
 {
   "name": "svg-color-linter",
   "displayName": "SVG Color Linter",
-  "version": "2.0.3",
+  "version": "3.0.0",
   "description": "Linting tool to check if SVG files use only colors of a given color palette",
   "main": "./lib/index.js",
   "module": "./lib/index.js",
@@ -15,8 +15,14 @@
     "format": "bunx @biomejs/biome format --write ./src",
     "prepublish": "bun run build"
   },
-  "files": ["lib/"],
-  "keywords": ["SVG", "Linter", "Colors"],
+  "files": [
+    "lib/"
+  ],
+  "keywords": [
+    "SVG",
+    "Linter",
+    "Colors"
+  ],
   "engines": {
     "bun": ">=1.0.0"
   },

@@ -1,3 +1,34 @@
+## v3.0.0
+
+[compare changes](https://github.com/PKief/svg-color-linter/compare/v2.0.3...v3.0.0)
+
+### 🚀 Enhancements
+
+- Implement exclude parameter for config ([#7](https://github.com/PKief/svg-color-linter/pull/7))
+- ⚠️  Refactor colors to config flag ([da3f633](https://github.com/PKief/svg-color-linter/commit/da3f633))
+- Update generation of changelog ([79df1d1](https://github.com/PKief/svg-color-linter/commit/79df1d1))
+
+### 🩹 Fixes
+
+- **deps:** Update bun packages (major) ([#8](https://github.com/PKief/svg-color-linter/pull/8))
+
+### 🏡 Chore
+
+- **workflows:** Update build script ([9432e23](https://github.com/PKief/svg-color-linter/commit/9432e23))
+- Improve linting with biome ([9fb53a8](https://github.com/PKief/svg-color-linter/commit/9fb53a8))
+- Validate PR titles ([9202599](https://github.com/PKief/svg-color-linter/commit/9202599))
+- **workflows:** Add renovate config ([b30b49a](https://github.com/PKief/svg-color-linter/commit/b30b49a))
+- **config:** Migrate renovate config ([#10](https://github.com/PKief/svg-color-linter/pull/10))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Refactor colors to config flag ([da3f633](https://github.com/PKief/svg-color-linter/commit/da3f633))
+
+### ❤️ Contributors
+
+- Philipp Kief ([@PKief](http://github.com/PKief))
+- Okinea Dev ([@okineadev](http://github.com/okineadev))
+
 ### Changelog 
 
  All notable changes to this project will be documented in this file. Dates are displayed in UTC.
