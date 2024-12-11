@@ -11,7 +11,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "bun test",
-    "lint": "bunx @biomejs/biome check --write ./src",
+    "lint": "biome check",
     "format": "bunx @biomejs/biome format --write ./src",
     "prepublish": "bun run build"
   },

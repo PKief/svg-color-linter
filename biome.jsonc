@@ -9,6 +9,16 @@
     "lineWidth": 80,
     "attributePosition": "auto"
   },
+  "files": {
+    "ignore": [
+      "lib",
+      "bin",
+      "coverage",
+      "node_modules",
+      "package.json",
+      "bun.lockb"
+    ]
+  },
   "organizeImports": { "enabled": true },
   "linter": {
     "enabled": true,
