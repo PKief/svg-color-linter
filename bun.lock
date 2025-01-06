@@ -13,7 +13,7 @@
       "devDependencies": {
         "@biomejs/biome": "^1.8.3",
         "@types/bun": "^1.1.6",
-        "@types/chroma-js": "^2.4.4",
+        "@types/chroma-js": "^3.0.0",
         "@types/glob": "^8.1.0",
         "@types/is-glob": "^4.0.4",
         "@types/jest": "^29.5.12",
@@ -193,7 +193,7 @@
 
     "@types/bun": ["@types/bun@1.1.6", "", { "dependencies": { "bun-types": "1.1.17" } }, "sha512-uJgKjTdX0GkWEHZzQzFsJkWp5+43ZS7HC8sZPFnOwnSo1AsNl2q9o2bFeS23disNDqbggEgyFkKCHl/w8iZsMA=="],
 
-    "@types/chroma-js": ["@types/chroma-js@2.4.4", "", {}, "sha512-/DTccpHTaKomqussrn+ciEvfW4k6NAHzNzs/sts1TCqg333qNxOhy8TNIoQCmbGG3Tl8KdEhkGAssb1n3mTXiQ=="],
+    "@types/chroma-js": ["@types/chroma-js@3.1.0", "", {}, "sha512-Uwl3SOtUkbQ6Ye6ZYu4q4xdLGBzmY839sEHYtOT7i691neeyd+7fXWT5VIkcUSfNwIFrIjQutNYQn9h4q5HFvg=="],
 
     "@types/glob": ["@types/glob@8.1.0", "", { "dependencies": { "@types/minimatch": "^5.1.2", "@types/node": "*" } }, "sha512-IO+MJPVhoqz+28h1qLAcBEH2+xHMK6MTyHJc7MTnnYb6wsoLR29POVGJ7LycmVXIqyy/4/2ShP5sUwTXuOwb/w=="],
 
