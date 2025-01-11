@@ -27,19 +27,18 @@
     "bun": ">=1.0.0"
   },
   "author": {
-    "name": "Philipp Kief",
-    "email": "philipp.kief@gmx.de",
-    "url": "https://pkief.com"
+    "name": "Material Extensions",
+    "email": "material-icons-extensions@googlegroups.com",
+    "url": "https://github.com/material-extensions"
   },
-  "funding": "https://github.com/sponsors/pkief",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PKief/svg-color-linter/issues"
+    "url": "https://github.com/material-extensions/svg-color-linter/issues"
   },
-  "homepage": "https://github.com/PKief/svg-color-linter/blob/main/README.md",
+  "homepage": "https://github.com/material-extensions/svg-color-linter/blob/main/README.md",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PKief/svg-color-linter.git"
+    "url": "git+https://github.com/material-extensions/svg-color-linter.git"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
